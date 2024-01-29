@@ -6,3 +6,14 @@
 
 ## Look no more, this is all you have been waiting for, the all new WeatherApp, better than Pro, because its the MAX!
 
+Features:
+
+- Add and remove as many cities as you like.
+- The app keeps them all using SwiftData, so you can check your favorite city even if you went somewhere without the internet (we all know you won't).
+- Detail weather and forecast is just one tap on your favorite city away.
+- No more salmon stuck to your pan.
+
+## About
+
+App is made using MVVM architecture using SwiftUI.
+
