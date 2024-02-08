@@ -9,11 +9,6 @@ enum WeatherType {
     case freezing
 }
 
-enum WeatherDataType {
-    case current
-    case forecast
-}
-
 @Model
 class Weather: Equatable {
     @Attribute(.unique) let cityName: String
@@ -26,22 +21,26 @@ class Weather: Equatable {
     
     var currentRefreshDate: Date
     var forecastRefreshDate: Date?
+    
     var currentWeather: WeatherModel
-    var forecastWeather: [WeatherModel]
+    var hourForecastWeather: [HourForecastModel]
+    var dayForecastWeather: [DayForecastModel]
     
     init(
         cityName: String,
         country: String,
         timezone: Int,
         currentWeather: WeatherModel = WeatherModel.example,
-        forecastWeather: [WeatherModel] = []
+        hourForecastWeather: [HourForecastModel] = [],
+        dayForecastWeather: [DayForecastModel] = []
     ) {
         self.cityName = cityName
         self.country = country
         self.timezone = timezone
         self.currentRefreshDate = Date.now
         self.currentWeather = currentWeather
-        self.forecastWeather = forecastWeather
+        self.hourForecastWeather = hourForecastWeather
+        self.dayForecastWeather = dayForecastWeather
     }
 }
 
@@ -269,5 +268,54 @@ extension WeatherModel {
             visibility: response.visibility,
             feelsLike: response.main.feels_like
         )
+    }
+}
+
+struct HourForecastModel: Codable, Hashable {
+    let cityName: String
+    let date: Date
+    let temperature: Float
+    let systemIcon: String
+    
+    var temperatureString: String {
+        getTemperatureString(from: temperature)
+    }
+    
+    var hourString: String {
+        date.formatted(Date.FormatStyle().hour().minute())
+    }
+    
+    private func getTemperatureString(from temperature: Float) -> String {
+        let temp = String(format: "%.0f", temperature) + "°"
+        if temp == "-0°" {
+            return "0°"
+        } else {
+            return temp
+        }
+    }
+}
+
+struct DayForecastModel: Codable, Hashable {
+    let cityName: String
+    let date: Date
+    let maxTemperature: Float
+    let minTemperature: Float
+    let systemIcon: String
+    
+    var maxtemperatureString: String {
+        getTemperatureString(from: maxTemperature)
+    }
+    
+    var mintemperatureString: String {
+        getTemperatureString(from: minTemperature)
+    }
+    
+    private func getTemperatureString(from temperature: Float) -> String {
+        let temp = String(format: "%.0f", temperature) + "°"
+        if temp == "-0°" {
+            return "0°"
+        } else {
+            return temp
+        }
     }
 }

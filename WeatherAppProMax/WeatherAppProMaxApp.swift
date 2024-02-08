@@ -3,36 +3,20 @@ import SwiftData
 
 @main
 struct WeatherAppProMaxApp: App {
-//    var sharedModelContainer: ModelContainer = {
-//        let schema = Schema([
-//            Weather.self
-////            WeatherModel.self
-//        ])
-//        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-//
+    
+//    let modelContainer: ModelContainer
+//    
+//    init() {
 //        do {
-//            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+//            modelContainer = try ModelContainer(for: Weather.self)
 //        } catch {
-//            fatalError("Could not create ModelContainer: \(error)")
+//            fatalError("error creating model container")
 //        }
-//    }()
-    
-    let modelContainer: ModelContainer
-    
-    init() {
-        do {
-            modelContainer = try ModelContainer(for: Weather.self)
-        } catch {
-            fatalError("error creating model container")
-        }
-    }
+//    }
 
     var body: some Scene {
         WindowGroup {
-            MainView(
-                vm: MainViewViewModel(context: modelContainer.mainContext)
-            )
+            MainView()
         }
-//        .modelContainer(modelContainer)
     }
 }

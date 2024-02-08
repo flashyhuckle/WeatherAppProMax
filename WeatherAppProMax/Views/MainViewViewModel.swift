@@ -1,23 +1,23 @@
 import Foundation
 import SwiftData
 
-class MainViewViewModel: ObservableObject {
-    private var repository = WeatherRepository()
-    var context: ModelContext
+final class MainViewViewModel: ObservableObject {
+    private let repository: WeatherRepositoryType
+    let storage: SwiftDataStorage
     @Published var weathers = [Weather]()
     
-    init(context: ModelContext) {
-        self.context = context
+    init(
+        storage: SwiftDataStorage = SwiftDataStorage(model: Weather.self),
+        repository: WeatherRepositoryType = WeatherRepository()
+    ) {
+        self.storage = storage
+        self.repository = repository
         loadData()
     }
     
-     func loadData() {
-        do {
-            let descriptor = FetchDescriptor<Weather>(sortBy: [SortDescriptor(\.cityName)])
-            weathers = try context.fetch(descriptor)
-        } catch {
-            print("Fetch failed")
-        }
+    func loadData() {
+        weathers = storage.loadObjects()
+        
         print(weathers.map{$0.cityName})
     }
     
@@ -36,44 +36,39 @@ class MainViewViewModel: ObservableObject {
         }
     }
     
-    func addCity(_ city: String) {
-        fetchWeather(for: city)
+    func forceRefreshAllWeathers() {
+        for weather in weathers {
+            fetchWeather(for: weather.cityName)
+        }
     }
     
     private func fetchWeather(for city: String) {
         print("fetching new weather for \(city) at \(Date.now)")
         Task { @MainActor in
-            let currentWeather = try await repository.getCurrentWeather(for: city)
+            let currentWeather = try await repository.getWeather(for: city)
             if let weatherForCity = weathers.first(where: {$0.cityName == city}) {
-                weatherForCity.currentWeather = currentWeather[0]
+                weatherForCity.currentWeather = currentWeather
                 weatherForCity.currentRefreshDate = Date.now
-//                loadData()
             } else {
                 let weather = Weather(
-                    cityName: currentWeather[0].cityName,
-                    country: currentWeather[0].country,
-                    timezone: currentWeather[0].timezone,
-                    currentWeather: currentWeather[0]
+                    cityName: currentWeather.cityName,
+                    country: currentWeather.country,
+                    timezone: currentWeather.timezone,
+                    currentWeather: currentWeather
                 )
-                context.insert(weather)
-//                loadData()
+                storage.saveObject(weather)
             }
             loadData()
         }
     }
     
     func remove(city: String) {
-        do {
-            try context.delete(model: Weather.self, where: #Predicate { $0.cityName == city })
-            print("deleted \(city)")
-        } catch {
-            print("clear")
-        }
+        storage.removeObject(for: city)
         loadData()
     }
     
     func clearData() {
-        try? context.delete(model: Weather.self)
+        storage.removeAllData()
         loadData()
     }
 }
