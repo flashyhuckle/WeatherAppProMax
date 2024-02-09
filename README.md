@@ -16,4 +16,10 @@ Features:
 ## About
 
 App is made using MVVM architecture using SwiftUI.
+App uses SwiftData as data storage.
+Main screen lets you add Cities to follow for the weather information. Detail View shows more inforbation about current weather and hourly/weekly forecast.
+Weatherdata is fetched from OpenWeatherMap free API - current weather and 3hour/5day forecast.
 
+## Upcoming
+
+- Tests
