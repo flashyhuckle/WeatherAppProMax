@@ -11,7 +11,7 @@ class WeatherViewModel: ObservableObject {
     @Published var dayForecast: [DayForecastModel] = []
     
     init(
-        storage: SwiftDataStorage,
+        storage: SwiftDataStorage = SwiftDataStorage(model: Weather.self),
         repository: ForecastRepositoryType = ForecastRepository()
     ) {
         self.storage = storage

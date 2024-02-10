@@ -9,20 +9,30 @@ struct MainViewTile: View {
         NavigationLink {
             WeatherView(
                 city: weather.cityName,
-                vm: WeatherViewModel(
-                    storage: vm.storage
-                )
+                vm: WeatherViewModel()
             )
         } label: {
             ZStack {
                 RoundedRectangle(cornerSize: CGSize(width: 30, height: 30))
                     .foregroundStyle(.teal)
-                VStack {
-                    Text(weather.cityName)
+                VStack(alignment: .leading) {
                     HStack {
                         Text(weather.temperatureString)
+                        Spacer()
                         Image(systemName: weather.systemIcon)
                     }
+                    .font(.system(size: 25))
+                    .padding()
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        Text(weather.cityName)
+                            .font(.system(size: 20))
+                        Text(weather.country)
+                            .font(.system(size: 20))
+                            .opacity(0.5)
+                    }
+                    .padding()
+                    
                 }
                 .foregroundStyle(.white)
             }

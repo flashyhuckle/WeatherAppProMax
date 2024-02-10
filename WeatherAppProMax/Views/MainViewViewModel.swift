@@ -17,7 +17,6 @@ final class MainViewViewModel: ObservableObject {
     
     func loadData() {
         weathers = storage.loadObjects()
-        
         print(weathers.map{$0.cityName})
     }
     

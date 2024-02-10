@@ -97,15 +97,12 @@ final class Repository: RepositoryType {
         // Response
         let (data, _) = try await URLSession.shared.data(for: request)
         
-        let decoded = try await MF.request(endpoint: url, as: CurrentResponse.self)
         
         do {
             let currentResponse = try decode(into: CurrentResponse.self, data: data)
             let weatherModel = WeatherModel.makeCurrent(from: currentResponse)
             
-            let model = WeatherModel.makeCurrent(from: decoded)
-            
-            return model
+            return weatherModel
         } catch {
             throw WeatherAppError.DecodeError.cannotDecodeData
         }

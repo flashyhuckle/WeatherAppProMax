@@ -1,5 +1,4 @@
 import Foundation
-import SwiftData
 
 enum WeatherType {
     case hot
@@ -7,41 +6,6 @@ enum WeatherType {
     case mild
     case cold
     case freezing
-}
-
-@Model
-class Weather: Equatable {
-    @Attribute(.unique) let cityName: String
-    let country: String
-    let timezone: Int
-    
-    var locationString: String {
-        cityName + ", " + (country)
-    }
-    
-    var currentRefreshDate: Date
-    var forecastRefreshDate: Date?
-    
-    var currentWeather: WeatherModel
-    var hourForecastWeather: [HourForecastModel]
-    var dayForecastWeather: [DayForecastModel]
-    
-    init(
-        cityName: String,
-        country: String,
-        timezone: Int,
-        currentWeather: WeatherModel = WeatherModel.example,
-        hourForecastWeather: [HourForecastModel] = [],
-        dayForecastWeather: [DayForecastModel] = []
-    ) {
-        self.cityName = cityName
-        self.country = country
-        self.timezone = timezone
-        self.currentRefreshDate = Date.now
-        self.currentWeather = currentWeather
-        self.hourForecastWeather = hourForecastWeather
-        self.dayForecastWeather = dayForecastWeather
-    }
 }
 
 struct WeatherModel: Codable, Hashable {
@@ -72,44 +36,35 @@ struct WeatherModel: Codable, Hashable {
     }
     
     var dateString: String {
-        date.formatted(Date.FormatStyle().weekday(.wide).month(.wide).day(.twoDigits))
+        date.dateString()
     }
     
     var shortDateString: String {
-        date.formatted(Date.FormatStyle().month(.twoDigits).day(.twoDigits))
+        date.shortDateString()
     }
     
     var hourString: String {
-        date.formatted(Date.FormatStyle().hour().minute())
+        date.hourString()
     }
     
     var locationString: String {
-        cityName + ", " + (country)
+        cityName + ", " + country
     }
     
     var temperatureString: String {
-        getTemperatureString(from: temperature)
+        temperature.toString()
     }
     
     var maxtemperatureString: String {
-        getTemperatureString(from: maxTemperature)
+        maxTemperature.toString()
     }
     
     var mintemperatureString: String {
-        getTemperatureString(from: minTemperature)
+        minTemperature.toString()
     }
     
     var feelsLikeString: String {
-        getTemperatureString(from: feelsLike)
-    }
-    
-    private func getTemperatureString(from temperature: Float) -> String {
-        let temp = String(format: "%.0f", temperature) + "°"
-        if temp == "-0°" {
-            return "0°"
-        } else {
-            return temp
-        }
+        feelsLike.toString()
     }
     
     var pressureString: String {
@@ -166,22 +121,23 @@ struct WeatherModel: Codable, Hashable {
         }
     }
     
-    init(cityName: String,
-         country: String,
-         date: Date,
-         temperature: Float,
-         maxTemperature: Float,
-         minTemperature: Float,
-         icon: String,
-         descriptionString: String,
-         sunrise: Int,
-         sunset: Int,
-         pressure: Int,
-         windSpeed: Float,
-         timezone: Int,
-         humidity: Int,
-         visibility: Int,
-         feelsLike: Float
+    init(
+        cityName: String,
+        country: String,
+        date: Date,
+        temperature: Float,
+        maxTemperature: Float,
+        minTemperature: Float,
+        icon: String,
+        descriptionString: String,
+        sunrise: Int,
+        sunset: Int,
+        pressure: Int,
+        windSpeed: Float,
+        timezone: Int,
+        humidity: Int,
+        visibility: Int,
+        feelsLike: Float
     ) {
         self.cityName = cityName
         self.country = country
@@ -271,51 +227,3 @@ extension WeatherModel {
     }
 }
 
-struct HourForecastModel: Codable, Hashable {
-    let cityName: String
-    let date: Date
-    let temperature: Float
-    let systemIcon: String
-    
-    var temperatureString: String {
-        getTemperatureString(from: temperature)
-    }
-    
-    var hourString: String {
-        date.formatted(Date.FormatStyle().hour().minute())
-    }
-    
-    private func getTemperatureString(from temperature: Float) -> String {
-        let temp = String(format: "%.0f", temperature) + "°"
-        if temp == "-0°" {
-            return "0°"
-        } else {
-            return temp
-        }
-    }
-}
-
-struct DayForecastModel: Codable, Hashable {
-    let cityName: String
-    let date: Date
-    let maxTemperature: Float
-    let minTemperature: Float
-    let systemIcon: String
-    
-    var maxtemperatureString: String {
-        getTemperatureString(from: maxTemperature)
-    }
-    
-    var mintemperatureString: String {
-        getTemperatureString(from: minTemperature)
-    }
-    
-    private func getTemperatureString(from temperature: Float) -> String {
-        let temp = String(format: "%.0f", temperature) + "°"
-        if temp == "-0°" {
-            return "0°"
-        } else {
-            return temp
-        }
-    }
-}

@@ -11,7 +11,7 @@ class SwiftDataStorage {
             let container = try ModelContainer(for: T.self)
             self.context = ModelContext(container)
         } catch {
-            WeatherAppError.DataStorageError.modelContainerNotInitialized
+            assertionFailure(WeatherAppError.DataStorageError.modelContainerNotInitialized.localizedDescription)
         }
     }
     
@@ -34,13 +34,9 @@ class SwiftDataStorage {
         }
     }
     
-//    private func insertModel<T: PersistentModel>(_ model: T) throws {
-//        do {
-//            try context?.insert(T)
-//        } catch {
-//            throw WeatherAppError.DataStorageError.insertError
-//        }
-//    }
+    private func insertModel<T: PersistentModel>(_ model: T) {
+        context?.insert(model)
+    }
     
     private func removeModelWithPrecidate<T: PersistentModel>(_ model: T.Type, predicate: Predicate<T>) throws {
         do {
@@ -72,7 +68,7 @@ extension SwiftDataStorage: StorageType {
     }
     
     func saveObject(_ object: Weather) {
-        context?.insert(object)
+        insertModel(object)
     }
     
     func removeObject(for key: String) {
@@ -80,7 +76,6 @@ extension SwiftDataStorage: StorageType {
             let predicate = #Predicate<Weather> { weather in
                 weather.cityName == key
             }
-//            try context?.delete(model: Weather.self, where: #Predicate { $0.cityName == key })
             try removeModelWithPrecidate(Weather.self, predicate: predicate)
         } catch {
             assertionFailure("No Model to remove for key: \(key)")
@@ -89,7 +84,6 @@ extension SwiftDataStorage: StorageType {
     
     func removeAllData() {
         do {
-//            try context?.delete(model: Weather.self)
             try removeAllModels(Weather.self)
         } catch {
             assertionFailure("Error removing all data: \(error)")
