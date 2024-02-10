@@ -207,6 +207,17 @@
 			path = WeatherAppError;
 			sourceTree = "<group>";
 		};
+		A44300E62B77C64C0097A4AA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A44300C42B7297700097A4AA /* ForecastRepositoryType.swift */,
+				A44300C82B729CE50097A4AA /* ForecastRepository.swift */,
+				A44300C62B7298080097A4AA /* WeatherRepositoryType.swift */,
+				A44300CE2B72AA050097A4AA /* WeatherRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		A4592DFC2B4EE60400016D13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,18 +226,6 @@
 				A44300B82B7244F70097A4AA /* WeatherView */,
 				A4592E052B5060F000016D13 /* WeatherViewModel.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A4592DFD2B4EE66300016D13 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				A44300C42B7297700097A4AA /* ForecastRepositoryType.swift */,
-				A44300C82B729CE50097A4AA /* ForecastRepository.swift */,
-				A44300C62B7298080097A4AA /* WeatherRepositoryType.swift */,
-				A44300CE2B72AA050097A4AA /* WeatherRepository.swift */,
-			);
-			name = Repository;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -271,7 +270,7 @@
 				A44300BD2B724FFA0097A4AA /* Extensions */,
 				A44300B02B715C4D0097A4AA /* Storage */,
 				A4592E042B5060D600016D13 /* Model */,
-				A4592DFD2B4EE66300016D13 /* Repository */,
+				A44300E62B77C64C0097A4AA /* Repository */,
 				A44300CD2B72A8F60097A4AA /* PathMonitor */,
 				A44300B92B7249E10097A4AA /* Info.plist */,
 				A44300D42B72AF210097A4AA /* Networking */,
