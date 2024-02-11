@@ -65,9 +65,4 @@ final class MainViewViewModel: ObservableObject {
         storage.removeObject(for: city)
         loadData()
     }
-    
-    func clearData() {
-        storage.removeAllData()
-        loadData()
-    }
 }

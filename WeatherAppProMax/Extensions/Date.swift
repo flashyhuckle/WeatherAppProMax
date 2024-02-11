@@ -2,7 +2,7 @@ import Foundation
 
 public extension Date {
     func hourString() -> String {
-        self.formatted(Date.FormatStyle().hour().minute())
+        self.formatted(Date.FormatStyle().hour())
     }
     
     func shortDateString() -> String {
@@ -11,5 +11,9 @@ public extension Date {
     
     func dateString() -> String {
         self.formatted(Date.FormatStyle().weekday(.wide).month(.wide).day(.twoDigits))
+    }
+    
+    func dayString() -> String {
+        self.formatted(Date.FormatStyle().weekday(.wide))
     }
 }

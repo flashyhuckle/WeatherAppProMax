@@ -15,8 +15,8 @@ struct DeleteCityTileButton: View {
         } label: {
             Image(systemName: "trash")
                 .foregroundStyle(.red)
-                .font(.system(size: 50))
-                .frame(width: 150, height: 150)
+                .opacityFont(size: .large)
+                .frame(width: .xlarge * 2, height: .xlarge * 2)
         }
     }
 }
@@ -29,22 +29,26 @@ struct ToolbarAddButton: View {
             isAddingEnabled = true
         } label: {
             Image(systemName: "plus")
-        }.tint(.teal)
+        }
+            .customSecondaryColor()
     }
 }
 
-struct ToolbarDeleteButton: View {
-    @Binding var isDeleteEnabled: Bool
+struct ToolbarEditButton: View {
+    @Binding var isEditEnabled: Bool
     
     var body: some View {
         Button {
-            isDeleteEnabled.toggle()
+            withAnimation {
+                isEditEnabled.toggle()
+            }
         } label: {
-            if isDeleteEnabled {
+            if isEditEnabled {
                 Text("Done")
             } else {
                 Text("Edit")
             }
-        }.tint(.teal)
+        }
+        .customSecondaryColor()
     }
 }

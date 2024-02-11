@@ -10,3 +10,12 @@ public extension Float {
         }
     }
 }
+
+public extension CGFloat {
+    static var xxsmall: CGFloat = 10
+    static var xsmall: CGFloat = 15
+    static var small: CGFloat = 20
+    static var medium: CGFloat = 30
+    static var large: CGFloat = 50
+    static var xlarge: CGFloat = 80
+}

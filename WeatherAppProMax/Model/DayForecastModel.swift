@@ -14,4 +14,8 @@ struct DayForecastModel: Codable, Hashable {
     var mintemperatureString: String {
         minTemperature.toString()
     }
+    
+    var dayString: String {
+        date.dayString()
+    }
 }

@@ -3,7 +3,7 @@ import SwiftUI
 struct MainView: View {
     @State private var cityToAdd = ""
     @State private var showingAddAlert = false
-    @State private var deletingCities = false
+    @State private var isEditEnabled = false
     
     @StateObject var vm: MainViewViewModel
     
@@ -12,7 +12,6 @@ struct MainView: View {
     ) {
         _vm = StateObject(wrappedValue: vm)
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
@@ -22,25 +21,7 @@ struct MainView: View {
                 if vm.weathers.isEmpty {
                     Text("Add a city with the plus button.")
                 } else {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-                        ForEach(vm.weathers, id: \.self) { weather in
-                            ZStack {
-                                MainViewTile(
-                                    weather: weather.currentWeather,
-                                    vm: vm
-                                )
-                                .padding()
-                                if deletingCities {
-                                    DeleteCityTileButton(cityName: weather.cityName,
-                                                         count: vm.weathers.count,
-                                                         deleteMethod: vm.remove(city:),
-                                                         isDeleteEnabled: $deletingCities
-                                    )
-                                }
-                            }
-                        }
-                    }
-                    .padding()
+                    MainViewTileView(vm: vm, isEditEnabled: $isEditEnabled)
                 }
             }
             .toolbar {
@@ -50,7 +31,7 @@ struct MainView: View {
                 
                 if !vm.weathers.isEmpty {
                     ToolbarItem(placement: .topBarLeading) {
-                        ToolbarDeleteButton(isDeleteEnabled: $deletingCities)
+                        ToolbarEditButton(isEditEnabled: $isEditEnabled)
                     }
                 }
             }

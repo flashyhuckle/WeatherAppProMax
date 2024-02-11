@@ -19,7 +19,7 @@ class WeatherViewModel: ObservableObject {
         loadData()
     }
     
-    func refreshWeather(for city: String) {
+    func refreshForecast(for city: String) {
         if let weatherForCity = weathers.first(where: {$0.cityName == city}) {
             currentWeather = weatherForCity.currentWeather
             hourForecast = weatherForCity.hourForecastWeather
@@ -51,26 +51,30 @@ class WeatherViewModel: ObservableObject {
     private func fetchWeather(for city: String) {
         Task { @MainActor in
             let forecast = try await repository.getForecast(for: city)
-            var tempHourForecast = [HourForecastModel]()
-            for i in 0..<(min(9, forecast.count)) {
-                tempHourForecast.append(
-                    HourForecastModel(
-                        cityName: forecast[i].cityName,
-                        date: forecast[i].date,
-                        temperature: forecast[i].temperature,
-                        systemIcon: forecast[i].systemIcon
-                    )
-                )
-            }
-            hourForecast = tempHourForecast
             print("fetched new forecast for \(forecast[0].cityName)")
             if let cityWeather = weathers.first(where: {$0.cityName == city}) {
-                cityWeather.hourForecastWeather = tempHourForecast
+                cityWeather.hourForecastWeather = makeHourForecast(from: forecast)
                 cityWeather.dayForecastWeather = makeDayForecast(from: forecast)
                 cityWeather.forecastRefreshDate = Date.now
             }
             loadData()
         }
+    }
+    
+    private func makeHourForecast(from forecast: [WeatherModel]) -> [HourForecastModel] {
+        var tempHourForecast = [HourForecastModel]()
+        for i in 0..<(min(9, forecast.count)) {
+            tempHourForecast.append(
+                HourForecastModel(
+                    cityName: forecast[i].cityName,
+                    date: forecast[i].date,
+                    temperature: forecast[i].temperature,
+                    systemIcon: forecast[i].systemIcon
+                )
+            )
+        }
+        hourForecast = tempHourForecast
+        return tempHourForecast
     }
     
     private func makeDayForecast(from forecast: [WeatherModel]) -> [DayForecastModel] {

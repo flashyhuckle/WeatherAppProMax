@@ -9,34 +9,32 @@ struct MainViewTile: View {
         NavigationLink {
             WeatherView(
                 city: weather.cityName,
-                vm: WeatherViewModel()
+                vm: WeatherViewModel(storage: vm.storage)
             )
         } label: {
             ZStack {
-                RoundedRectangle(cornerSize: CGSize(width: 30, height: 30))
-                    .foregroundStyle(.teal)
+                RoundedRectangle(cornerSize: CGSize(width: Int(CGFloat.medium), height: Int(CGFloat.medium)))
+                    .customSecondaryColor()
                 VStack(alignment: .leading) {
                     HStack {
                         Text(weather.temperatureString)
                         Spacer()
                         Image(systemName: weather.systemIcon)
                     }
-                    .font(.system(size: 25))
-                    .padding()
-                    Spacer()
+                    .opacityFont(size: .medium)
                     VStack(alignment: .leading) {
                         Text(weather.cityName)
-                            .font(.system(size: 20))
+                            .opacityFont(size: .medium)
+                            .frame(width: .xlarge + .large, height: .medium + 5, alignment: .leading)
+                            .minimumScaleFactor(0.5)
                         Text(weather.country)
-                            .font(.system(size: 20))
-                            .opacity(0.5)
+                            .opacityFont(size: .small, opacity: 0.5)
                     }
-                    .padding()
-                    
                 }
-                .foregroundStyle(.white)
+                .padding(.xsmall)
+                .customPrimaryColor()
             }
-            .frame(width: 150, height: 150)
+            .frame(width: .xlarge * 2, height: .xlarge * 2)
         }
         .onAppear(perform: {
             vm.refreshWeather(for: weather.cityName)

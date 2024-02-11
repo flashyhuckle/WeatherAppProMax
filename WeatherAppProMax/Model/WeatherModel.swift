@@ -71,6 +71,14 @@ struct WeatherModel: Codable, Hashable {
         return String(pressure) + "hPa"
     }
     
+    var humidityString: String {
+        return String(humidity) + "%"
+    }
+    
+    var visibilityString: String {
+        return String(visibility/1000) + "km"
+    }
+    
     var windSpeedString: String {
         String(format: "%.0f", windSpeed) + "km/h"
     }
@@ -185,7 +193,7 @@ extension WeatherModel {
             WeatherModel(
                 cityName: response.city.name,
                 country: response.city.country,
-                date: Date(timeIntervalSince1970: TimeInterval(weather.dt)),
+                date: Date(timeIntervalSince1970: TimeInterval(weather.dt + response.city.timezone - TimeZone.current.secondsFromGMT())),
                 temperature: weather.main.temp,
                 maxTemperature: weather.main.temp_max,
                 minTemperature: weather.main.temp_min,
@@ -209,7 +217,7 @@ extension WeatherModel {
         WeatherModel(
             cityName: response.name,
             country: response.sys.country,
-            date: Date(timeIntervalSince1970: TimeInterval(response.dt)),
+            date: Date(timeIntervalSince1970: TimeInterval(response.dt + response.timezone - TimeZone.current.secondsFromGMT())),
             temperature: response.main.temp,
             maxTemperature: response.main.temp_max,
             minTemperature: response.main.temp_min,
