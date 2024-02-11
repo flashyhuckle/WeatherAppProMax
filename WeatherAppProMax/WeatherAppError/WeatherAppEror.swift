@@ -1,10 +1,10 @@
 
-enum WeatherAppError: Error {
-    enum NetworkError: Error {
+enum WeatherAppError: Error, Equatable {
+    enum NetworkError: Error, Equatable  {
         case noConnection
     }
     
-    enum RequestError: Error {
+    enum RequestError: Error, Equatable  {
         case cannotBuildValidURL(path: String, method: HTTPMethod = .GET)
         case badResponse
         case unauthorized
@@ -12,11 +12,11 @@ enum WeatherAppError: Error {
         case serverError(statusCode: Int)
     }
 
-    enum DecodeError: Error {
+    enum DecodeError: Error, Equatable  {
         case cannotDecodeData
     }
     
-    enum DataStorageError: Error {
+    enum DataStorageError: Error, Equatable  {
         case modelContainerNotInitialized
         case saveError
         case loadError

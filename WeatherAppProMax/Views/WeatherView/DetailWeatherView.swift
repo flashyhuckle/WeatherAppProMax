@@ -32,7 +32,8 @@ struct DetailWeatherView: View {
         if UIDevice.current.userInterfaceIdiom == .pad {
             [GridItem(.flexible())]
         } else {
-            [GridItem(.flexible()), GridItem(.flexible())]
+            [GridItem(.flexible()), 
+             GridItem(.flexible())]
         }
     }
 }

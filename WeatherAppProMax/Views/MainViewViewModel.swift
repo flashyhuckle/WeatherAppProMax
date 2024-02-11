@@ -3,11 +3,11 @@ import SwiftData
 
 final class MainViewViewModel: ObservableObject {
     private let repository: WeatherRepositoryType
-    let storage: SwiftDataStorage
+    let storage: any StorageType<Weather>
     @Published var weathers = [Weather]()
     
     init(
-        storage: SwiftDataStorage = SwiftDataStorage(model: Weather.self),
+        storage: any StorageType<Weather> = SwiftDataStorage(model: Weather.self),
         repository: WeatherRepositoryType = WeatherRepository()
     ) {
         self.storage = storage

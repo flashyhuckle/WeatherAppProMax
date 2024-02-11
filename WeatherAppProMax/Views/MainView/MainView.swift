@@ -39,8 +39,9 @@ struct MainView: View {
                 TextField("City name", text: $cityToAdd)
                 Button("Add") {
                     withAnimation {
-                        vm.refreshWeather(for: cityToAdd)
-                        cityToAdd = ""
+                    vm.refreshWeather(for: cityToAdd)
+                            cityToAdd = ""
+                        
                     }
                 }
                 Button("Cancel", role: .cancel) {

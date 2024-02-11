@@ -50,6 +50,22 @@
 		A4E0BD1E2B484CCD002224ED /* WeatherAppProMaxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0BD1D2B484CCD002224ED /* WeatherAppProMaxUITests.swift */; };
 		A4E0BD202B484CCD002224ED /* WeatherAppProMaxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E0BD1F2B484CCD002224ED /* WeatherAppProMaxUITestsLaunchTests.swift */; };
 		A4ECDBF52B79008400E4BF4A /* MainViewTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDBF42B79008400E4BF4A /* MainViewTileView.swift */; };
+		A4ECDBF72B792A7F00E4BF4A /* SwiftDataStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDBF62B792A7F00E4BF4A /* SwiftDataStorageTests.swift */; };
+		A4ECDBF92B793C0900E4BF4A /* CurrentWeatherTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = A4ECDBF82B793C0900E4BF4A /* CurrentWeatherTestData.json */; };
+		A4ECDBFD2B793CE600E4BF4A /* ForecastTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = A4ECDBFC2B793CE600E4BF4A /* ForecastTestData.json */; };
+		A4ECDBFF2B793D4300E4BF4A /* ForecastDecodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDBFE2B793D4300E4BF4A /* ForecastDecodingTest.swift */; };
+		A4ECDC012B79407400E4BF4A /* CurrentWeatherDecodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC002B79407400E4BF4A /* CurrentWeatherDecodingTest.swift */; };
+		A4ECDC032B79440C00E4BF4A /* OpenWeatherAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC022B79440C00E4BF4A /* OpenWeatherAPITests.swift */; };
+		A4ECDC052B794B0F00E4BF4A /* URLSessionHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC042B794B0E00E4BF4A /* URLSessionHandlerMock.swift */; };
+		A4ECDC072B79567400E4BF4A /* ForecastRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC062B79567400E4BF4A /* ForecastRepositoryTests.swift */; };
+		A4ECDC092B79567E00E4BF4A /* WeatherRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC082B79567E00E4BF4A /* WeatherRepositoryTests.swift */; };
+		A4ECDC0B2B79569000E4BF4A /* MainViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC0A2B79569000E4BF4A /* MainViewViewModelTests.swift */; };
+		A4ECDC0D2B79569900E4BF4A /* WeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC0C2B79569900E4BF4A /* WeatherViewModelTests.swift */; };
+		A4ECDC102B79577800E4BF4A /* PathMonitorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC0F2B79577800E4BF4A /* PathMonitorMock.swift */; };
+		A4ECDC122B7957CA00E4BF4A /* OpenWeatherAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC112B7957CA00E4BF4A /* OpenWeatherAPIMock.swift */; };
+		A4ECDC142B79616100E4BF4A /* ForecastRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC132B79616100E4BF4A /* ForecastRepositoryMock.swift */; };
+		A4ECDC162B79616B00E4BF4A /* WeatherRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC152B79616B00E4BF4A /* WeatherRepositoryMock.swift */; };
+		A4ECDC182B7963AC00E4BF4A /* StorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC172B7963AC00E4BF4A /* StorageMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +133,22 @@
 		A4E0BD1D2B484CCD002224ED /* WeatherAppProMaxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppProMaxUITests.swift; sourceTree = "<group>"; };
 		A4E0BD1F2B484CCD002224ED /* WeatherAppProMaxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppProMaxUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A4ECDBF42B79008400E4BF4A /* MainViewTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTileView.swift; sourceTree = "<group>"; };
+		A4ECDBF62B792A7F00E4BF4A /* SwiftDataStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataStorageTests.swift; sourceTree = "<group>"; };
+		A4ECDBF82B793C0900E4BF4A /* CurrentWeatherTestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrentWeatherTestData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		A4ECDBFC2B793CE600E4BF4A /* ForecastTestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ForecastTestData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		A4ECDBFE2B793D4300E4BF4A /* ForecastDecodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDecodingTest.swift; sourceTree = "<group>"; };
+		A4ECDC002B79407400E4BF4A /* CurrentWeatherDecodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDecodingTest.swift; sourceTree = "<group>"; };
+		A4ECDC022B79440C00E4BF4A /* OpenWeatherAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPITests.swift; sourceTree = "<group>"; };
+		A4ECDC042B794B0E00E4BF4A /* URLSessionHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHandlerMock.swift; sourceTree = "<group>"; };
+		A4ECDC062B79567400E4BF4A /* ForecastRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepositoryTests.swift; sourceTree = "<group>"; };
+		A4ECDC082B79567E00E4BF4A /* WeatherRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryTests.swift; sourceTree = "<group>"; };
+		A4ECDC0A2B79569000E4BF4A /* MainViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModelTests.swift; sourceTree = "<group>"; };
+		A4ECDC0C2B79569900E4BF4A /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
+		A4ECDC0F2B79577800E4BF4A /* PathMonitorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathMonitorMock.swift; sourceTree = "<group>"; };
+		A4ECDC112B7957CA00E4BF4A /* OpenWeatherAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPIMock.swift; sourceTree = "<group>"; };
+		A4ECDC132B79616100E4BF4A /* ForecastRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepositoryMock.swift; sourceTree = "<group>"; };
+		A4ECDC152B79616B00E4BF4A /* WeatherRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryMock.swift; sourceTree = "<group>"; };
+		A4ECDC172B7963AC00E4BF4A /* StorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +344,17 @@
 			isa = PBXGroup;
 			children = (
 				A4E0BD132B484CCD002224ED /* WeatherAppProMaxTests.swift */,
+				A4ECDC0E2B79576B00E4BF4A /* Mock */,
+				A4ECDBF62B792A7F00E4BF4A /* SwiftDataStorageTests.swift */,
+				A4ECDBFC2B793CE600E4BF4A /* ForecastTestData.json */,
+				A4ECDBFE2B793D4300E4BF4A /* ForecastDecodingTest.swift */,
+				A4ECDBF82B793C0900E4BF4A /* CurrentWeatherTestData.json */,
+				A4ECDC002B79407400E4BF4A /* CurrentWeatherDecodingTest.swift */,
+				A4ECDC022B79440C00E4BF4A /* OpenWeatherAPITests.swift */,
+				A4ECDC062B79567400E4BF4A /* ForecastRepositoryTests.swift */,
+				A4ECDC082B79567E00E4BF4A /* WeatherRepositoryTests.swift */,
+				A4ECDC0A2B79569000E4BF4A /* MainViewViewModelTests.swift */,
+				A4ECDC0C2B79569900E4BF4A /* WeatherViewModelTests.swift */,
 			);
 			path = WeatherAppProMaxTests;
 			sourceTree = "<group>";
@@ -323,6 +366,19 @@
 				A4E0BD1F2B484CCD002224ED /* WeatherAppProMaxUITestsLaunchTests.swift */,
 			);
 			path = WeatherAppProMaxUITests;
+			sourceTree = "<group>";
+		};
+		A4ECDC0E2B79576B00E4BF4A /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A4ECDC042B794B0E00E4BF4A /* URLSessionHandlerMock.swift */,
+				A4ECDC0F2B79577800E4BF4A /* PathMonitorMock.swift */,
+				A4ECDC112B7957CA00E4BF4A /* OpenWeatherAPIMock.swift */,
+				A4ECDC172B7963AC00E4BF4A /* StorageMock.swift */,
+				A4ECDC132B79616100E4BF4A /* ForecastRepositoryMock.swift */,
+				A4ECDC152B79616B00E4BF4A /* WeatherRepositoryMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +494,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4ECDBF92B793C0900E4BF4A /* CurrentWeatherTestData.json in Resources */,
+				A4ECDBFD2B793CE600E4BF4A /* ForecastTestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +559,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E0BD142B484CCD002224ED /* WeatherAppProMaxTests.swift in Sources */,
+				A4ECDC052B794B0F00E4BF4A /* URLSessionHandlerMock.swift in Sources */,
+				A4ECDC182B7963AC00E4BF4A /* StorageMock.swift in Sources */,
+				A4ECDC142B79616100E4BF4A /* ForecastRepositoryMock.swift in Sources */,
+				A4ECDC092B79567E00E4BF4A /* WeatherRepositoryTests.swift in Sources */,
+				A4ECDBFF2B793D4300E4BF4A /* ForecastDecodingTest.swift in Sources */,
+				A4ECDC0B2B79569000E4BF4A /* MainViewViewModelTests.swift in Sources */,
+				A4ECDC122B7957CA00E4BF4A /* OpenWeatherAPIMock.swift in Sources */,
+				A4ECDC102B79577800E4BF4A /* PathMonitorMock.swift in Sources */,
+				A4ECDC162B79616B00E4BF4A /* WeatherRepositoryMock.swift in Sources */,
+				A4ECDC012B79407400E4BF4A /* CurrentWeatherDecodingTest.swift in Sources */,
+				A4ECDC072B79567400E4BF4A /* ForecastRepositoryTests.swift in Sources */,
+				A4ECDBF72B792A7F00E4BF4A /* SwiftDataStorageTests.swift in Sources */,
+				A4ECDC032B79440C00E4BF4A /* OpenWeatherAPITests.swift in Sources */,
+				A4ECDC0D2B79569900E4BF4A /* WeatherViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

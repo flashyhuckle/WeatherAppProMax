@@ -1,11 +1,16 @@
 import Network
 
-class PathMonitor {
+protocol PathMonitorType {
+    var isNetworkOn: Bool { get }
+}
+
+class PathMonitor: PathMonitorType {
+    
     private let monitor = NWPathMonitor()
     private var status: NWPath.Status = .requiresConnection
     
     var isNetworkOn: Bool {
-        return status == .satisfied
+        status == .satisfied
     }
     
     init() {

@@ -39,4 +39,37 @@ struct ForecastResponse: Decodable {
         let sunset: Int
         let timezone: Int
     }
+    
+    static let example = ForecastResponse(
+        list: [
+            List(
+                dt: 1707674400,
+                main: Main(
+                    temp: 282.18,
+                    feels_like: 280.11,
+                    temp_min: 281.73,
+                    temp_max: 282.18,
+                    pressure: 994,
+                    humidity: 80
+                ),
+                weather: [
+                    Weather(
+                        main: "Clouds",
+                        description: "scattered clouds",
+                        icon: "03n"
+                    )],
+                wind: Wind(
+                    speed: 3.69
+                ),
+                visibility: 10000
+            )],
+        city: City(
+            name: "London",
+            country: "GB",
+            sunrise: 1707636197,
+            sunset: 1707671181,
+            timezone: 0
+        ),
+        cnt: 5
+    )
 }

@@ -25,11 +25,12 @@ extension OpenWeatherAPI: OpenWeatherAPIType {
         ]
         
         let data = try await handler.performRequest(path: path.rawValue, query: query)
+        
         do {
             let decoded = try decoder.decode(T.self, from: data)
             return decoded
         } catch {
             throw WeatherAppError.DecodeError.cannotDecodeData
         }
-    }
+        }
 }

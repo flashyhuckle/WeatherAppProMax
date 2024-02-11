@@ -168,20 +168,20 @@ struct WeatherModel: Codable, Hashable {
     static let example = WeatherModel(
         cityName: "London",
         country: "UK",
-        date: Date(),
-        temperature: 0,
-        maxTemperature: 0,
-        minTemperature: 0,
-        icon: "cloud",
-        descriptionString: "",
-        sunrise: 0,
-        sunset: 0,
-        pressure: 0,
-        windSpeed: 0,
+        date: Date(timeIntervalSince1970: TimeInterval(1707672453 - TimeZone.current.secondsFromGMT())),
+        temperature: 282.47,
+        maxTemperature: 283.35,
+        minTemperature: 280.64,
+        icon: "03n",
+        descriptionString: "scattered clouds",
+        sunrise: 1707636197,
+        sunset: 1707671181,
+        pressure: 994,
+        windSpeed: 3.09,
         timezone: 0,
-        humidity: 0,
-        visibility: 0,
-        feelsLike: 0
+        humidity: 80,
+        visibility: 10000,
+        feelsLike: 280.79
     )
 }
 

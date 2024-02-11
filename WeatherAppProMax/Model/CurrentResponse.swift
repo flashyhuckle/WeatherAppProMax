@@ -33,4 +33,32 @@ struct CurrentResponse: Decodable {
     struct Wind: Decodable {
         let speed: Float
     }
+    
+    static let example = CurrentResponse(
+        weather: [
+            Weather(
+                icon: "03n",
+                description: "scattered clouds"
+            )],
+        main: Main(
+            temp: 282.47,
+            feels_like: 280.79,
+            pressure: 994,
+            humidity: 80,
+            temp_min: 280.64,
+            temp_max: 283.35
+        ),
+        name: "London",
+        sys: Sys(
+            country: "GB",
+            sunrise: 1707636197,
+            sunset: 1707671181
+        ),
+        wind: Wind(
+            speed: 3.09
+        ),
+        visibility: 10000,
+        timezone: 0,
+        dt: 1707672453
+    )
 }

@@ -28,9 +28,13 @@ struct MainViewTileView: View {
     
     private func getColumns() -> [GridItem] {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            [GridItem(.flexible(), spacing: 20),GridItem(.flexible(), spacing: 20),GridItem(.flexible(), spacing: 20),GridItem(.flexible(), spacing: 20)]
+            [GridItem(.flexible(), spacing: 20),
+             GridItem(.flexible(), spacing: 20),
+             GridItem(.flexible(), spacing: 20),
+             GridItem(.flexible(), spacing: 20)]
         } else {
-            [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)]
+            [GridItem(.flexible(), spacing: 20), 
+             GridItem(.flexible(), spacing: 20)]
         }
     }
 }

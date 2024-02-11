@@ -4,14 +4,14 @@ import SwiftUI
 
 class WeatherViewModel: ObservableObject {
     private var repository: ForecastRepositoryType
-    private let storage: SwiftDataStorage
+    private let storage: any StorageType<Weather>
     private var weathers: [Weather] = []
     @Published var currentWeather = WeatherModel.example
     @Published var hourForecast: [HourForecastModel] = []
     @Published var dayForecast: [DayForecastModel] = []
     
     init(
-        storage: SwiftDataStorage = SwiftDataStorage(model: Weather.self),
+        storage: any StorageType<Weather> = SwiftDataStorage(model: Weather.self),
         repository: ForecastRepositoryType = ForecastRepository()
     ) {
         self.storage = storage

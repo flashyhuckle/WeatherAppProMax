@@ -1,11 +1,11 @@
 import Foundation
 
 class ForecastRepository {
-    private let monitor: PathMonitor
+    private let monitor: PathMonitorType
     private let api: OpenWeatherAPIType
     
     init(
-        monitor: PathMonitor = PathMonitor(),
+        monitor: PathMonitorType = PathMonitor(),
         api: OpenWeatherAPIType = OpenWeatherAPI()
     ) {
         self.monitor = monitor

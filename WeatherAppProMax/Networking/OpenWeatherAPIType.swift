@@ -1,5 +1,10 @@
 import Foundation
 
+enum EndpointPath: String {
+    case forecast
+    case weather
+}
+
 protocol OpenWeatherAPIType {
     func getWeather<T: Decodable>(
         path: EndpointPath,

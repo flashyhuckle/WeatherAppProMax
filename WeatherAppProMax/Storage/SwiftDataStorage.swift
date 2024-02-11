@@ -37,6 +37,14 @@ class SwiftDataStorage {
             throw WeatherAppError.DataStorageError.deleteError
         }
     }
+    
+    private func removeAllModels<T: PersistentModel>(_ model: T.Type) throws {
+        do {
+            try context?.delete(model: T.self)
+        } catch {
+            throw WeatherAppError.DataStorageError.deleteError
+        }
+    }
 }
 
 extension SwiftDataStorage: StorageType {
@@ -62,7 +70,15 @@ extension SwiftDataStorage: StorageType {
             }
             try removeModelWithPrecidate(Weather.self, predicate: predicate)
         } catch {
-            assertionFailure("No Model to remove for key: \(key)")
+            assertionFailure("No Model to remove for key: \(key).")
+        }
+    }
+    
+    func removeAllObjects() {
+        do {
+            try removeAllModels(Weather.self)
+        } catch {
+            assertionFailure("No Model to remove.")
         }
     }
 }

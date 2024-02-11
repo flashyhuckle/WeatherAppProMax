@@ -5,10 +5,7 @@ public enum HTTPMethod: String {
 //    case POST
 }
 
-enum EndpointPath: String {
-    case forecast
-    case weather
-}
+
 
 protocol EndpointType {
     var path: EndpointPath { get }
