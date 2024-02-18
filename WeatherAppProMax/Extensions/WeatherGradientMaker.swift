@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct WeatherGradientMaker {
-    func makeGradient(for weather: WeatherType) -> LinearGradient {
+public struct WeatherGradientMaker {
+    static func makeGradient(for weather: WeatherType) -> LinearGradient {
         switch weather {
         case .hot:
             UINavigationBar.appearance().backgroundColor = .orange

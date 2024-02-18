@@ -2,16 +2,12 @@ import SwiftUI
 
 struct DeleteCityTileButton: View {
     let cityName: String
-    var count: Int
     let deleteMethod: (_ city: String) -> Void
     @Binding var isDeleteEnabled: Bool
     
     var body: some View {
         Button {
             deleteMethod(cityName)
-            if count == 1 {
-                isDeleteEnabled = false
-            }
         } label: {
             Image(systemName: "trash")
                 .foregroundStyle(.red)
@@ -23,14 +19,16 @@ struct DeleteCityTileButton: View {
 
 struct ToolbarAddButton: View {
     @Binding var isAddingEnabled: Bool
+    @Binding var isEditEnabled: Bool
     
     var body: some View {
         Button {
             isAddingEnabled = true
+            isEditEnabled = false
         } label: {
             Image(systemName: "plus")
         }
-            .customSecondaryColor()
+        .customSecondaryColor()
     }
 }
 

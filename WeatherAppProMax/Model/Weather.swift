@@ -34,4 +34,10 @@ class Weather: Equatable {
         self.hourForecastWeather = hourForecastWeather
         self.dayForecastWeather = dayForecastWeather
     }
+    
+    static let example = Weather(
+        cityName: WeatherModel.example.cityName,
+        country: WeatherModel.example.country,
+        timezone: WeatherModel.example.timezone
+    )
 }

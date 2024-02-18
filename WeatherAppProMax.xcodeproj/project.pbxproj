@@ -215,8 +215,8 @@
 				A44300BE2B7251840097A4AA /* Bundle.swift */,
 				A44300DC2B74FE990097A4AA /* Float.swift */,
 				A44300DE2B75668E0097A4AA /* Date.swift */,
-				A44300ED2B77D1330097A4AA /* WeatherGradientMaker.swift */,
 				A44300EF2B77F1180097A4AA /* View.swift */,
+				A44300ED2B77D1330097A4AA /* WeatherGradientMaker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

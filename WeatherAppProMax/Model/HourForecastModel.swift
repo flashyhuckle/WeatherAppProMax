@@ -14,3 +14,23 @@ struct HourForecastModel: Codable, Hashable {
         date.hourString()
     }
 }
+
+extension HourForecastModel {
+    static func makeHourForecast(from forecast: [WeatherModel]) -> [HourForecastModel] {
+        var tempHourForecast = [HourForecastModel]()
+        //we just want next 9 entries by design - if somehow our forecast has less, we create less
+        for i in 0..<(min(9, forecast.count)) {
+            tempHourForecast.append(
+                HourForecastModel(
+                    cityName: forecast[i].cityName,
+                    date: forecast[i].date,
+                    temperature: forecast[i].temperature,
+                    systemIcon: forecast[i].systemIcon
+                )
+            )
+        }
+        //refreshing @Published variable
+//        hourForecast = tempHourForecast
+        return tempHourForecast
+    }
+}

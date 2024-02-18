@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct WeatherView: View {
-    
-    let city: String
     @StateObject var vm: WeatherViewModel
 
     var body: some View {
@@ -12,14 +10,20 @@ struct WeatherView: View {
                 
                 DetailWeatherView(weather: vm.currentWeather)
                 
-                if !vm.hourForecast.isEmpty {
-                    Divider()
-                    HourForecastView(hourForecast: vm.hourForecast)
-                }
-                
-                if !vm.dayForecast.isEmpty {
-                    Divider()
-                    DailyForecastView(dayForecast: vm.dayForecast)
+                if vm.isForecastLoading {
+                    ProgressView()
+                        .customPrimaryTint()
+                        .scaleEffect(CGSize(width: 3.0, height: 3.0), anchor: .top)
+                } else {
+                    if !vm.hourForecast.isEmpty {
+                        Divider()
+                        HourForecastView(hourForecast: vm.hourForecast)
+                    }
+                    
+                    if !vm.dayForecast.isEmpty {
+                        Divider()
+                        DailyForecastView(dayForecast: vm.dayForecast)
+                    }
                 }
             }
             .toolbar {
@@ -28,7 +32,9 @@ struct WeatherView: View {
                 }
             }
             .onAppear {
-                vm.refreshForecast(for: city)
+                Task { 
+                    await vm.refreshForecast()
+                }
             }
             
             .navigationBarBackButtonHidden()
@@ -39,12 +45,12 @@ struct WeatherView: View {
             .background(makeGradient())
             
             .refreshable {
-                vm.forceRefresh(for: city)
+                await vm.forceRefresh()
             }
         }
     }
     
     private func makeGradient() -> LinearGradient {
-        return WeatherGradientMaker().makeGradient(for: vm.currentWeather.weatherType)
+        return WeatherGradientMaker.makeGradient(for: vm.currentWeather.weatherType)
     }
 }

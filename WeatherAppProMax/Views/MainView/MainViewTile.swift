@@ -1,15 +1,12 @@
 import SwiftUI
 
 struct MainViewTile: View {
-    let weather: WeatherModel
-    
-    @StateObject var vm: MainViewViewModel
+    let weather: Weather
     
     var body: some View {
         NavigationLink {
             WeatherView(
-                city: weather.cityName,
-                vm: WeatherViewModel(storage: vm.storage)
+                vm: WeatherViewModel(weather: weather)
             )
         } label: {
             ZStack {
@@ -17,9 +14,9 @@ struct MainViewTile: View {
                     .customSecondaryColor()
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(weather.temperatureString)
+                        Text(weather.currentWeather.temperatureString)
                         Spacer()
-                        Image(systemName: weather.systemIcon)
+                        Image(systemName: weather.currentWeather.systemIcon)
                     }
                     .opacityFont(size: .medium)
                     VStack(alignment: .leading) {
@@ -36,8 +33,5 @@ struct MainViewTile: View {
             }
             .frame(width: .xlarge * 2, height: .xlarge * 2)
         }
-        .onAppear(perform: {
-            vm.refreshWeather(for: weather.cityName)
-        })
     }
 }

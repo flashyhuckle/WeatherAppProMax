@@ -27,7 +27,7 @@ final class ForecastDecodingTest: XCTestCase {
         XCTAssertEqual(firstItem.main.temp_max, 282.18)
     }
     
-    func testForecastDecodingFromJSONBadResponse() throws {
+    func testForecastDecodingFromJSONBadResponseModel() throws {
         let decoder = JSONDecoder()
         let forecastResponse = try? decoder.decode(CurrentResponse.self, from: data)
         

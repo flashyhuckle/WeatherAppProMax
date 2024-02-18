@@ -8,7 +8,7 @@ struct MainView: View {
     @StateObject var vm: MainViewViewModel
     
     init(
-        vm: MainViewViewModel = MainViewViewModel()
+        vm: MainViewViewModel
     ) {
         _vm = StateObject(wrappedValue: vm)
         
@@ -26,7 +26,7 @@ struct MainView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    ToolbarAddButton(isAddingEnabled: $showingAddAlert)
+                    ToolbarAddButton(isAddingEnabled: $showingAddAlert, isEditEnabled: $isEditEnabled)
                 }
                 
                 if !vm.weathers.isEmpty {
@@ -38,10 +38,9 @@ struct MainView: View {
             .alert("Add a city", isPresented: $showingAddAlert, actions: {
                 TextField("City name", text: $cityToAdd)
                 Button("Add") {
-                    withAnimation {
-                    vm.refreshWeather(for: cityToAdd)
-                            cityToAdd = ""
-                        
+                    Task {
+                        await vm.addNew(city: cityToAdd)
+                        cityToAdd = ""
                     }
                 }
                 Button("Cancel", role: .cancel) {
@@ -49,7 +48,12 @@ struct MainView: View {
                 }
             })
             .refreshable {
-                vm.forceRefreshAllWeathers()
+                await vm.refresh()
+            }
+            .onAppear {
+                Task {
+                    await vm.onAppear()
+                }
             }
         }
     }

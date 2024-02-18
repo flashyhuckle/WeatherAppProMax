@@ -5,7 +5,7 @@ import SwiftData
 struct WeatherAppProMaxApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(vm: MainViewViewModel())
         }
     }
 }

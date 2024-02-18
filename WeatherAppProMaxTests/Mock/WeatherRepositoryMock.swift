@@ -1,9 +1,9 @@
 @testable import WeatherAppProMax
 
 final class WeatherRepositoryMock: WeatherRepositoryType {
-    var mockWeather = WeatherModel.example
+    let mockWeather = WeatherModel.example
     
-    func getWeather(for city: String) async throws -> WeatherAppProMax.WeatherModel {
+    func getWeather(for city: String) async throws -> WeatherModel {
         mockWeather
     }
 }

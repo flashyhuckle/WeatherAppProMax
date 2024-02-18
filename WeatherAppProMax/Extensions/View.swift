@@ -25,6 +25,15 @@ struct CustomColor: ViewModifier {
     }
 }
 
+struct CustomTint: ViewModifier {
+    let color: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .tint(color)
+    }
+}
+
 extension View {
     func customPrimaryColor() -> some View {
         modifier(CustomColor(color: .white))
@@ -34,5 +43,11 @@ extension View {
 extension View {
     func customSecondaryColor() -> some View {
         modifier(CustomColor(color: .teal))
+    }
+}
+
+extension View {
+    func customPrimaryTint() -> some View {
+        modifier(CustomTint(color: .white))
     }
 }

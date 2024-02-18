@@ -8,14 +8,10 @@ struct MainViewTileView: View {
         LazyVGrid(columns: getColumns()) {
             ForEach(vm.weathers, id: \.self) { weather in
                 ZStack {
-                    MainViewTile(
-                        weather: weather.currentWeather,
-                        vm: vm
-                    )
+                    MainViewTile(weather: weather)
                     .padding()
                     if isEditEnabled {
                         DeleteCityTileButton(cityName: weather.cityName,
-                                             count: vm.weathers.count,
                                              deleteMethod: vm.remove(city:),
                                              isDeleteEnabled: $isEditEnabled
                         )
@@ -28,13 +24,13 @@ struct MainViewTileView: View {
     
     private func getColumns() -> [GridItem] {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            [GridItem(.flexible(), spacing: 20),
-             GridItem(.flexible(), spacing: 20),
-             GridItem(.flexible(), spacing: 20),
-             GridItem(.flexible(), spacing: 20)]
+            [GridItem(.flexible(), spacing: .small),
+             GridItem(.flexible(), spacing: .small),
+             GridItem(.flexible(), spacing: .small),
+             GridItem(.flexible(), spacing: .small)]
         } else {
-            [GridItem(.flexible(), spacing: 20), 
-             GridItem(.flexible(), spacing: 20)]
+            [GridItem(.flexible(), spacing: .small),
+             GridItem(.flexible(), spacing: .small)]
         }
     }
 }
