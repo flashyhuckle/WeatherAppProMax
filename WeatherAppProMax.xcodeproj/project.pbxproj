@@ -64,6 +64,10 @@
 		A4ECDC142B79616100E4BF4A /* ForecastRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC132B79616100E4BF4A /* ForecastRepositoryMock.swift */; };
 		A4ECDC162B79616B00E4BF4A /* WeatherRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC152B79616B00E4BF4A /* WeatherRepositoryMock.swift */; };
 		A4ECDC182B7963AC00E4BF4A /* StorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC172B7963AC00E4BF4A /* StorageMock.swift */; };
+		A4ECDC1B2B828D1B00E4BF4A /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC1A2B828D1B00E4BF4A /* MainViewTests.swift */; };
+		A4ECDC1D2B828DDF00E4BF4A /* MainViewViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC1C2B828DDF00E4BF4A /* MainViewViewModelMock.swift */; };
+		A4ECDC202B828F7200E4BF4A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = A4ECDC1F2B828F7200E4BF4A /* SnapshotTesting */; };
+		A4ECDC222B82933800E4BF4A /* WeatherViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECDC212B82933800E4BF4A /* WeatherViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +149,9 @@
 		A4ECDC132B79616100E4BF4A /* ForecastRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepositoryMock.swift; sourceTree = "<group>"; };
 		A4ECDC152B79616B00E4BF4A /* WeatherRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryMock.swift; sourceTree = "<group>"; };
 		A4ECDC172B7963AC00E4BF4A /* StorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageMock.swift; sourceTree = "<group>"; };
+		A4ECDC1A2B828D1B00E4BF4A /* MainViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTests.swift; sourceTree = "<group>"; };
+		A4ECDC1C2B828DDF00E4BF4A /* MainViewViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModelMock.swift; sourceTree = "<group>"; };
+		A4ECDC212B82933800E4BF4A /* WeatherViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4ECDC202B828F7200E4BF4A /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +294,7 @@
 				A4E0BD122B484CCD002224ED /* WeatherAppProMaxTests */,
 				A4E0BD1C2B484CCD002224ED /* WeatherAppProMaxUITests */,
 				A4E0BCFE2B484CC9002224ED /* Products */,
+				A4ECDC1E2B828F7200E4BF4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -341,6 +350,8 @@
 				A4ECDC082B79567E00E4BF4A /* WeatherRepositoryTests.swift */,
 				A4ECDC0A2B79569000E4BF4A /* MainViewViewModelTests.swift */,
 				A4ECDC0C2B79569900E4BF4A /* WeatherViewModelTests.swift */,
+				A4ECDC1A2B828D1B00E4BF4A /* MainViewTests.swift */,
+				A4ECDC212B82933800E4BF4A /* WeatherViewTests.swift */,
 			);
 			path = WeatherAppProMaxTests;
 			sourceTree = "<group>";
@@ -363,8 +374,16 @@
 				A4ECDC172B7963AC00E4BF4A /* StorageMock.swift */,
 				A4ECDC132B79616100E4BF4A /* ForecastRepositoryMock.swift */,
 				A4ECDC152B79616B00E4BF4A /* WeatherRepositoryMock.swift */,
+				A4ECDC1C2B828DDF00E4BF4A /* MainViewViewModelMock.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		A4ECDC1E2B828F7200E4BF4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +420,9 @@
 				A4E0BD112B484CCD002224ED /* PBXTargetDependency */,
 			);
 			name = WeatherAppProMaxTests;
+			packageProductDependencies = (
+				A4ECDC1F2B828F7200E4BF4A /* SnapshotTesting */,
+			);
 			productName = WeatherAppProMaxTests;
 			productReference = A4E0BD0F2B484CCD002224ED /* WeatherAppProMaxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -455,6 +477,9 @@
 				Base,
 			);
 			mainGroup = A4E0BCF42B484CC9002224ED;
+			packageReferences = (
+				A4ECDC192B828CAE00E4BF4A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = A4E0BCFE2B484CC9002224ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -543,12 +568,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E0BD142B484CCD002224ED /* WeatherAppProMaxTests.swift in Sources */,
+				A4ECDC1B2B828D1B00E4BF4A /* MainViewTests.swift in Sources */,
 				A4ECDC052B794B0F00E4BF4A /* URLSessionHandlerMock.swift in Sources */,
 				A4ECDC182B7963AC00E4BF4A /* StorageMock.swift in Sources */,
 				A4ECDC142B79616100E4BF4A /* ForecastRepositoryMock.swift in Sources */,
+				A4ECDC1D2B828DDF00E4BF4A /* MainViewViewModelMock.swift in Sources */,
 				A4ECDC092B79567E00E4BF4A /* WeatherRepositoryTests.swift in Sources */,
 				A4ECDBFF2B793D4300E4BF4A /* ForecastDecodingTest.swift in Sources */,
 				A4ECDC0B2B79569000E4BF4A /* MainViewViewModelTests.swift in Sources */,
+				A4ECDC222B82933800E4BF4A /* WeatherViewTests.swift in Sources */,
 				A4ECDC122B7957CA00E4BF4A /* OpenWeatherAPIMock.swift in Sources */,
 				A4ECDC102B79577800E4BF4A /* PathMonitorMock.swift in Sources */,
 				A4ECDC162B79616B00E4BF4A /* WeatherRepositoryMock.swift in Sources */,
@@ -876,6 +904,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4ECDC192B828CAE00E4BF4A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4ECDC1F2B828F7200E4BF4A /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4ECDC192B828CAE00E4BF4A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4E0BCF52B484CC9002224ED /* Project object */;
 }

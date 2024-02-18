@@ -199,7 +199,5 @@ final class MainViewViewModelTests: XCTestCase {
         
         XCTAssertFalse(vm.addAlertShowing)
         XCTAssertTrue(vm.textfieldText.isEmpty)
-        
     }
-    
 }
