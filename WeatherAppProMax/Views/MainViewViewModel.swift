@@ -7,6 +7,7 @@ final class MainViewViewModel: ObservableObject {
     let storage: any StorageType<Weather>
     @Published var weathers = [Weather]()
     
+    @Published var textfieldText: String = ""
     @Published var isEditEnabled: Bool = false
     @Published var addAlertShowing: Bool = false
     
@@ -31,12 +32,19 @@ final class MainViewViewModel: ObservableObject {
         isEditEnabled = false
     }
     
-    func toolbarEdutButtonPressed() {
+    func toolbarEditButtonPressed() {
         isEditEnabled.toggle()
     }
     
-    func addNew(city: String) async {
-        await fetchWeather(for: city)
+    func addNewButtonPressed() async {
+        await fetchWeather(for: textfieldText)
+        textfieldText = ""
+        addAlertShowing = false
+    }
+    
+    func cancelButtonPressed() {
+        textfieldText = ""
+        addAlertShowing = false
     }
     
     func onAppear() async {

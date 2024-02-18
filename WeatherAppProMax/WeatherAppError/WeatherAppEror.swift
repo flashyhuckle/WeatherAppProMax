@@ -5,7 +5,7 @@ enum WeatherAppError: Error, Equatable {
     }
     
     enum RequestError: Error, Equatable  {
-        case cannotBuildValidURL(path: String, method: HTTPMethod = .GET)
+        case cannotBuildValidURL(path: String)
         case badResponse
         case unauthorized
         case clientError(statusCode: Int)

@@ -13,7 +13,8 @@ final class MainViewViewModelTests: XCTestCase {
         XCTAssertTrue(vm.weathers.isEmpty)
         
         //refreshing weather from repository
-        await vm.addNew(city: "London")
+        vm.textfieldText = "London"
+        await vm.addNewButtonPressed()
         
         //array is no longer empty
         XCTAssertFalse(vm.weathers.isEmpty)
@@ -26,7 +27,8 @@ final class MainViewViewModelTests: XCTestCase {
         XCTAssertTrue(vm.weathers.isEmpty)
         
         //refreshing weather from repository
-        await vm.addNew(city: "London")
+        vm.textfieldText = "London"
+        await vm.addNewButtonPressed()
         
         //array is not empty
         XCTAssertFalse(vm.weathers.isEmpty)
@@ -138,6 +140,66 @@ final class MainViewViewModelTests: XCTestCase {
         
         //we still should have 1 weather
         XCTAssertEqual(vm.weathers.count, 1)
+    }
+    
+    func testToolbarAddButtonPressed() {
+        let vm = MainViewViewModel(storage: storage, repository: repository)
+        
+        XCTAssertFalse(vm.addAlertShowing)
+        
+        vm.toolbarAddButtonPressed()
+        
+        XCTAssertTrue(vm.addAlertShowing)
+    }
+    
+    func testToolbarEditButtonPressed() {
+        let vm = MainViewViewModel(storage: storage, repository: repository)
+        
+        XCTAssertFalse(vm.isEditEnabled)
+        
+        vm.toolbarEditButtonPressed()
+        
+        XCTAssertTrue(vm.isEditEnabled)
+    }
+    
+    func testToolbarEditButtonPressedAgain() {
+        let vm = MainViewViewModel(storage: storage, repository: repository)
+        
+        XCTAssertFalse(vm.isEditEnabled)
+        
+        vm.toolbarEditButtonPressed()
+        
+        XCTAssertTrue(vm.isEditEnabled)
+        
+        vm.toolbarEditButtonPressed()
+        
+        XCTAssertFalse(vm.isEditEnabled)
+    }
+    
+    func testAddNewButtonPressed() async {
+        let vm = MainViewViewModel(storage: storage, repository: repository)
+        
+        XCTAssertTrue(vm.weathers.isEmpty)
+        
+        vm.textfieldText = "London"
+        await vm.addNewButtonPressed()
+        
+        XCTAssertFalse(vm.weathers.isEmpty)
+        XCTAssertTrue(vm.textfieldText.isEmpty)
+        XCTAssertFalse(vm.addAlertShowing)
+    }
+    
+    func testCancelButtonPressed() {
+        let vm = MainViewViewModel(storage: storage, repository: repository)
+        
+        vm.addAlertShowing = true
+        vm.textfieldText = "Test"
+        
+        vm.cancelButtonPressed()
+        
+        XCTAssertFalse(vm.addAlertShowing)
+        XCTAssertTrue(vm.textfieldText.isEmpty)
+        
     }
     
 }

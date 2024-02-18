@@ -1,10 +1,6 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var cityToAdd = ""
-    @State private var showingAddAlert = false
-    @State private var isEditEnabled = false
-    
     @StateObject var vm: MainViewViewModel
     
     init(
@@ -21,30 +17,29 @@ struct MainView: View {
                 if vm.weathers.isEmpty {
                     Text("Add a city with the plus button.")
                 } else {
-                    MainViewTileView(vm: vm, isEditEnabled: $isEditEnabled)
+                    MainViewTileView(vm: vm)
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    ToolbarAddButton(isAddingEnabled: $showingAddAlert, isEditEnabled: $isEditEnabled)
+                    ToolbarAddButton(isAddingEnabled: $vm.addAlertShowing, isEditEnabled: $vm.isEditEnabled)
                 }
                 
                 if !vm.weathers.isEmpty {
                     ToolbarItem(placement: .topBarLeading) {
-                        ToolbarEditButton(isEditEnabled: $isEditEnabled)
+                        ToolbarEditButton(isEditEnabled: $vm.isEditEnabled)
                     }
                 }
             }
-            .alert("Add a city", isPresented: $showingAddAlert, actions: {
-                TextField("City name", text: $cityToAdd)
+            .alert("Add a city", isPresented: $vm.addAlertShowing, actions: {
+                TextField("City name", text: $vm.textfieldText)
                 Button("Add") {
                     Task {
-                        await vm.addNew(city: cityToAdd)
-                        cityToAdd = ""
+                        await vm.addNewButtonPressed()
                     }
                 }
                 Button("Cancel", role: .cancel) {
-                    cityToAdd = ""
+                    vm.cancelButtonPressed()
                 }
             })
             .refreshable {

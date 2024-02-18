@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MainViewTileView: View {
     @StateObject var vm: MainViewViewModel
-    @Binding var isEditEnabled: Bool
     
     var body: some View {
         LazyVGrid(columns: getColumns()) {
@@ -10,10 +9,10 @@ struct MainViewTileView: View {
                 ZStack {
                     MainViewTile(weather: weather)
                     .padding()
-                    if isEditEnabled {
+                    if vm.isEditEnabled {
                         DeleteCityTileButton(cityName: weather.cityName,
                                              deleteMethod: vm.remove(city:),
-                                             isDeleteEnabled: $isEditEnabled
+                                             isDeleteEnabled: $vm.isEditEnabled
                         )
                     }
                 }
