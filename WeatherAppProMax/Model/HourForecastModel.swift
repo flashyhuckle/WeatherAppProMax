@@ -29,8 +29,6 @@ extension HourForecastModel {
                 )
             )
         }
-        //refreshing @Published variable
-//        hourForecast = tempHourForecast
         return tempHourForecast
     }
 }

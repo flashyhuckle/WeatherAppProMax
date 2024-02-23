@@ -19,6 +19,7 @@ final class MainViewViewModel: ObservableObject {
         self.repository = repository
         //loading data at init to get all stored models into weathers array
         loadData()
+        
     }
     
     private func loadData() {

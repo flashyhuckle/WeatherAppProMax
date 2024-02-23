@@ -2,6 +2,7 @@ import SwiftUI
 
 public struct WeatherGradientMaker {
     static func makeGradient(for weather: WeatherType) -> LinearGradient {
+        print(weather)
         switch weather {
         case .hot:
             UINavigationBar.appearance().backgroundColor = .orange
@@ -13,10 +14,10 @@ public struct WeatherGradientMaker {
             UINavigationBar.appearance().backgroundColor = .green
             return LinearGradient(gradient: Gradient(colors: [.green, .yellow]), startPoint: .top, endPoint: .bottom)
         case .cold:
-            UINavigationBar.appearance().backgroundColor = .orange
+            UINavigationBar.appearance().backgroundColor = UIColor(.teal)
             return LinearGradient(gradient: Gradient(colors: [.teal, .green]), startPoint: .top, endPoint: .bottom)
         case .freezing:
-            UINavigationBar.appearance().backgroundColor = .orange
+            UINavigationBar.appearance().backgroundColor = UIColor(.teal)
             return LinearGradient(gradient: Gradient(colors: [.teal, .blue]), startPoint: .top, endPoint: .bottom)
         }
         

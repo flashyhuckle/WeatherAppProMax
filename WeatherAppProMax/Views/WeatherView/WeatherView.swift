@@ -13,7 +13,7 @@ struct WeatherView: View {
                 if vm.isForecastLoading {
                     ProgressView()
                         .customPrimaryTint()
-                        .scaleEffect(CGSize(width: 3.0, height: 3.0), anchor: .top)
+                        .scaleEffect(CGSize(width: 2.0, height: 2.0), anchor: .top)
                 } else {
                     if !vm.hourForecast.isEmpty {
                         Divider()
@@ -39,6 +39,7 @@ struct WeatherView: View {
             
             .navigationBarBackButtonHidden()
             .navigationTitle(vm.currentWeather.cityName)
+            .navigationBarTitleDisplayMode(.inline)
             .customPrimaryColor()
             
             .frame(maxWidth: .infinity)

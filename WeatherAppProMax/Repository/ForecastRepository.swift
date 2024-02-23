@@ -1,4 +1,6 @@
 import Foundation
+import OpenWeatherNetworking
+import WeatherAppError
 
 class ForecastRepository {
     private let monitor: PathMonitorType

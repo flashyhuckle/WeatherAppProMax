@@ -1,5 +1,7 @@
 import XCTest
 
+@testable import OpenWeatherNetworking
+@testable import WeatherAppError
 @testable import WeatherAppProMax
 
 final class WeatherRepositoryTests: XCTestCase {

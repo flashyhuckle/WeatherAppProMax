@@ -1,11 +1,13 @@
 import XCTest
 @testable import WeatherAppProMax
+@testable import OpenWeatherNetworking
+@testable import WeatherAppError
 
 final class OpenWeatherAPITests: XCTestCase {
     private var api: OpenWeatherAPIType!
     
     func testGetForecast() async throws {
-        api = OpenWeatherAPI()
+        api = OpenWeatherAPI(handler: URLSessionHandlerMockForecastData())
         
         do {
             let forecast = try await api.getWeather(path: .forecast, city: "London", as: ForecastResponse.self)
@@ -16,8 +18,19 @@ final class OpenWeatherAPITests: XCTestCase {
         }
     }
     
+    func testGetForecastBadResponseType() async throws {
+        api = OpenWeatherAPI(handler: URLSessionHandlerMockForecastData())
+        
+        do {
+            _  = try await api.getWeather(path: .forecast, city: "London", as: CurrentResponse.self)
+        } catch {
+            XCTAssertTrue(error is WeatherAppError.RequestError)
+            XCTAssertEqual(error as? WeatherAppError.RequestError, WeatherAppError.RequestError.badResponse)
+        }
+    }
+    
     func testGetWeather() async throws {
-        api = OpenWeatherAPI()
+        api = OpenWeatherAPI(handler: URLSessionHandlerMockCurrentData())
         
         do {
             let weather = try await api.getWeather(path: .weather, city: "London", as: CurrentResponse.self)
@@ -27,10 +40,19 @@ final class OpenWeatherAPITests: XCTestCase {
         }
     }
     
-    
+    func testGetWeatherBadResponseType() async throws {
+        api = OpenWeatherAPI(handler: URLSessionHandlerMockCurrentData())
+        
+        do {
+            _  = try await api.getWeather(path: .weather, city: "London", as: ForecastResponse.self)
+        } catch {
+            XCTAssertTrue(error is WeatherAppError.RequestError)
+            XCTAssertEqual(error as? WeatherAppError.RequestError, WeatherAppError.RequestError.badResponse)
+        }
+    }
     
     func testGetForecastNoKey() async throws {
-        api = OpenWeatherAPI()
+        api = OpenWeatherAPI(handler: URLSessionHandlerMockNoKey())
         
         do {
             _ = try await api.getWeather(path: .forecast, city: "London", as: ForecastResponse.self, apiKey: "")
@@ -41,7 +63,7 @@ final class OpenWeatherAPITests: XCTestCase {
     }
     
     func testGetWeatherNoKey() async throws {
-        api = OpenWeatherAPI()
+        api = OpenWeatherAPI(handler: URLSessionHandlerMockNoKey())
         
         do {
             _ = try await api.getWeather(path: .weather, city: "London", as: CurrentResponse.self, apiKey: "")

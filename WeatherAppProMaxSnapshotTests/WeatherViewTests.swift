@@ -1,6 +1,5 @@
 import SnapshotTesting
 import XCTest
-import SwiftUI
 
 @testable import WeatherAppProMax
 

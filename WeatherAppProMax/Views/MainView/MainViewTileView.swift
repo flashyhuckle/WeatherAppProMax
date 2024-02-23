@@ -7,7 +7,9 @@ struct MainViewTileView: View {
         LazyVGrid(columns: getColumns()) {
             ForEach(vm.weathers, id: \.self) { weather in
                 ZStack {
-                    MainViewTile(weather: weather)
+                    MainViewTile(
+                        vm: MainViewTileViewModel(weather: weather)
+                    )
                     .padding()
                     if vm.isEditEnabled {
                         DeleteCityTileButton(cityName: weather.cityName,
@@ -17,6 +19,7 @@ struct MainViewTileView: View {
                     }
                 }
             }
+            
         }
         .padding()
     }

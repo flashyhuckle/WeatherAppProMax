@@ -19,11 +19,7 @@ final class SwiftDataStorageTests: XCTestCase {
         storage.removeAllObjects()
         
         //creating sample model
-        let weather = Weather(
-            cityName: WeatherModel.example.cityName,
-            country: WeatherModel.example.country,
-            timezone: WeatherModel.example.timezone
-        )
+        let weather = Weather.makeMock()
         
         //saving sample model
         storage.saveObject(weather)

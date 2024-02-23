@@ -23,6 +23,7 @@ final class MainViewTests: XCTestCase {
         
         vm.toolbarAddButtonPressed()
         
+        
         assertSnapshot(of: view, as: .image)
     }
     

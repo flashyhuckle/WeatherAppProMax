@@ -1,10 +1,3 @@
-//
-//  WeatherAppProMaxTests.swift
-//  WeatherAppProMaxTests
-//
-//  Created by Marcin Głodzik on 05/01/2024.
-//
-
 import XCTest
 @testable import WeatherAppProMax
 

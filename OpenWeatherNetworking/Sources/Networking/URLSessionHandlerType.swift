@@ -1,6 +1,6 @@
 import Foundation
 
-protocol URLSessionHandlerType {
+public protocol URLSessionHandlerType {
     func performRequest(
         path: String,
         query: [String: String]?

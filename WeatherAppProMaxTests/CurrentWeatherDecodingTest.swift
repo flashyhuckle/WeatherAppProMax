@@ -5,11 +5,7 @@ final class CurrentWeatherDecodingTest: XCTestCase {
     private var data: Data!
     
     override func setUpWithError() throws {
-        guard let url = Bundle(for: type(of: self)).url(forResource: "CurrentWeatherTestData", withExtension: "json") else {
-            throw NSError(domain: "Test Forecast decoding", code: 404, userInfo: [NSLocalizedDescriptionKey: "File not found"])
-        }
-        
-        data = try Data(contentsOf: url)
+        data = CurrentResponse.mockCurrentData()
     }
     
     func testCurrentDecodingFromJSON() throws {
@@ -18,11 +14,26 @@ final class CurrentWeatherDecodingTest: XCTestCase {
         
         XCTAssertEqual(currentResponse.name, "London")
         
-        XCTAssertEqual(currentResponse.dt, 1707672453)
-        XCTAssertEqual(currentResponse.main.temp, 282.47)
-        XCTAssertEqual(currentResponse.main.feels_like, 280.79)
-        XCTAssertEqual(currentResponse.main.temp_min, 280.64)
-        XCTAssertEqual(currentResponse.main.temp_max, 283.35)
+        XCTAssertEqual(currentResponse.dt, 1708513638)
+        XCTAssertEqual(currentResponse.main.temp, 9.6)
+        XCTAssertEqual(currentResponse.main.feels_like, 6.51)
+        XCTAssertEqual(currentResponse.main.temp_min, 8.86)
+        XCTAssertEqual(currentResponse.main.temp_max, 10.44)
+    }
+    
+    func testMakeCurrent() throws {
+        let decoder = JSONDecoder()
+        let currentResponse = try decoder.decode(CurrentResponse.self, from: data)
+        
+        let model = WeatherModel.makeCurrent(from: currentResponse)
+        
+        XCTAssertEqual(model.cityName, "London")
+        
+        XCTAssertEqual(model.date, Date(timeIntervalSince1970: TimeInterval(1708513638 - TimeZone.current.secondsFromGMT())))
+        XCTAssertEqual(model.temperature, 9.6)
+        XCTAssertEqual(model.feelsLike, 6.51)
+        XCTAssertEqual(model.minTemperature, 8.86)
+        XCTAssertEqual(model.maxTemperature, 10.44)
     }
     
     func testCurrentDecodingFromJSONBadResponseModel() throws {

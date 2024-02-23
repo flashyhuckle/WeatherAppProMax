@@ -8,7 +8,7 @@ enum WeatherType {
     case freezing
 }
 
-struct WeatherModel: Codable, Hashable {
+public struct WeatherModel: Codable, Hashable {
     
     let cityName: String
     let country: String
@@ -164,25 +164,6 @@ struct WeatherModel: Codable, Hashable {
         self.visibility = visibility
         self.feelsLike = feelsLike
     }
-    
-    static let example = WeatherModel(
-        cityName: "London",
-        country: "UK",
-        date: Date(timeIntervalSince1970: TimeInterval(1707672453 - TimeZone.current.secondsFromGMT())),
-        temperature: 282.47,
-        maxTemperature: 283.35,
-        minTemperature: 280.64,
-        icon: "03n",
-        descriptionString: "scattered clouds",
-        sunrise: 1707636197,
-        sunset: 1707671181,
-        pressure: 994,
-        windSpeed: 3.09,
-        timezone: 0,
-        humidity: 80,
-        visibility: 10000,
-        feelsLike: 280.79
-    )
 }
 
 extension WeatherModel {

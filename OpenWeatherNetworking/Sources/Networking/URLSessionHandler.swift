@@ -1,10 +1,11 @@
 import Foundation
+import WeatherAppError
 
-class URLSessionHandler: URLSessionHandlerType {
+public class URLSessionHandler: URLSessionHandlerType {
     private let baseURL: URL
     private let session: URLSession
     
-    init(
+    public init(
         baseURL: URL = Bundle.main.apiBaseUrl,
         session: URLSession = URLSession(
             configuration: .default
@@ -14,7 +15,7 @@ class URLSessionHandler: URLSessionHandlerType {
         self.session = session
     }
     
-    func performRequest(
+    public func performRequest(
         path: String,
         query: [String: String]? = nil
     ) async throws -> Data {

@@ -99,8 +99,3 @@ final class WeatherViewModelTests: XCTestCase {
     
 }
 
-extension Weather {
-    static func makeMock() -> Weather {
-        Weather(cityName: Weather.example.cityName, country: Weather.example.country, timezone: Weather.example.timezone)
-    }
-}

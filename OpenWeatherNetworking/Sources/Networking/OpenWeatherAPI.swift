@@ -1,9 +1,10 @@
 import Foundation
+import WeatherAppError
 
-class OpenWeatherAPI {
+public class OpenWeatherAPI {
     private let handler: URLSessionHandlerType
     
-    init(
+    public init(
         handler: URLSessionHandlerType = URLSessionHandler()
     ) {
         self.handler = handler
@@ -11,7 +12,7 @@ class OpenWeatherAPI {
 }
 
 extension OpenWeatherAPI: OpenWeatherAPIType {
-    func getWeather<T: Decodable>(
+    public func getWeather<T: Decodable>(
         path: EndpointPath,
         city: String,
         decoder: JSONDecoder,
@@ -32,5 +33,5 @@ extension OpenWeatherAPI: OpenWeatherAPIType {
         } catch {
             throw WeatherAppError.DecodeError.cannotDecodeData
         }
-        }
+    }
 }

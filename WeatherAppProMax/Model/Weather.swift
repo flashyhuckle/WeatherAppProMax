@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Weather: Equatable {
+public class Weather: Equatable {
     @Attribute(.unique) let cityName: String
     let country: String
     let timezone: Int
@@ -22,7 +22,7 @@ class Weather: Equatable {
         cityName: String,
         country: String,
         timezone: Int,
-        currentWeather: WeatherModel = WeatherModel.example,
+        currentWeather: WeatherModel,
         hourForecastWeather: [HourForecastModel] = [],
         dayForecastWeather: [DayForecastModel] = []
     ) {
@@ -34,10 +34,15 @@ class Weather: Equatable {
         self.hourForecastWeather = hourForecastWeather
         self.dayForecastWeather = dayForecastWeather
     }
-    
-    static let example = Weather(
-        cityName: WeatherModel.example.cityName,
-        country: WeatherModel.example.country,
-        timezone: WeatherModel.example.timezone
-    )
+}
+
+extension Weather {
+    static func makeWeather(from model: WeatherModel) -> Weather {
+        Weather(
+            cityName: model.cityName,
+            country: model.country,
+            timezone: model.timezone,
+            currentWeather: model
+        )
+    }
 }

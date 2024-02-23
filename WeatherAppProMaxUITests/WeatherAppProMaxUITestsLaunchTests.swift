@@ -1,10 +1,3 @@
-//
-//  WeatherAppProMaxUITestsLaunchTests.swift
-//  WeatherAppProMaxUITests
-//
-//  Created by Marcin Głodzik on 05/01/2024.
-//
-
 import XCTest
 
 final class WeatherAppProMaxUITestsLaunchTests: XCTestCase {

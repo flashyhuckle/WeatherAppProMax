@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import WeatherAppError
 
 class SwiftDataStorage {
     var context: ModelContext?

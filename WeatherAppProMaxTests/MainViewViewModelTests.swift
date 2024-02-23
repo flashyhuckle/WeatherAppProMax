@@ -42,7 +42,7 @@ final class MainViewViewModelTests: XCTestCase {
     
     func testLoadData() {
         //creating sample weather
-        let weather = Weather.example
+        let weather = Weather.makeMock()
         
         //saving sample to storage
         storage.saveObject(weather)
@@ -58,7 +58,7 @@ final class MainViewViewModelTests: XCTestCase {
     
     func testRefreshWeatherFromStorage() async {
         //creating sample weather
-        let weather = Weather.example
+        let weather = Weather.makeMock()
         
         //saving sample to storage
         storage.saveObject(weather)
@@ -84,7 +84,7 @@ final class MainViewViewModelTests: XCTestCase {
     
     func testRefreshWeatherWithPreviousData() async {
         //creating sample weather
-        let weather = Weather.example
+        let weather = Weather.makeMock()
         
         //weather refresh date is 1 second older than required 10 minutes
         weather.currentRefreshDate = Date.now - TimeInterval(601)
@@ -113,7 +113,7 @@ final class MainViewViewModelTests: XCTestCase {
     
     func testForceRefresh() async {
         //creating sample weather
-        let weather = Weather.example
+        let weather = Weather.makeMock()
         
         //saving sample to storage
         storage.saveObject(weather)

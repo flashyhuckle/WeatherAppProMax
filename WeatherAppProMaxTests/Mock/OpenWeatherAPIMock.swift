@@ -1,11 +1,14 @@
-@testable import WeatherAppProMax
+import WeatherAppError
+import WeatherAppProMax
+import OpenWeatherNetworking
+
 import Foundation
 
-final class OpenWeatherAPIMock: OpenWeatherAPIType {
-    var mockCurrentResponse = CurrentResponse.example
-    var mockForecastResponse = ForecastResponse.example
+final public class OpenWeatherAPIMock: OpenWeatherAPIType {
+    var mockCurrentResponse = CurrentResponse.mockCurrentResponse()
+    var mockForecastResponse = ForecastResponse.mockForecastResponse()
     
-    func getWeather<T>(path: EndpointPath, city: String, decoder: JSONDecoder, as: T.Type, apiKey: String) async throws -> T where T : Decodable {
+    public func getWeather<T>(path: EndpointPath, city: String, decoder: JSONDecoder, as: T.Type, apiKey: String) async throws -> T where T : Decodable {
         switch path {
         case .forecast:
             if let response = mockForecastResponse as? T {

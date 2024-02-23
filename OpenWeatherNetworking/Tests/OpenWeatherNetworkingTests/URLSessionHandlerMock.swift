@@ -1,6 +1,26 @@
 import Foundation
 
+@testable import OpenWeatherNetworking
+@testable import WeatherAppError
 @testable import WeatherAppProMax
+
+final class URLSessionHandlerMockForecastData: URLSessionHandlerType {
+    func performRequest(path: String, query: [String : String]?) async throws -> Data {
+        return ForecastResponse.mockForecastData()
+    }
+}
+
+final class URLSessionHandlerMockCurrentData: URLSessionHandlerType {
+    func performRequest(path: String, query: [String : String]?) async throws -> Data {
+        return CurrentResponse.mockCurrentData()
+    }
+}
+
+final class URLSessionHandlerMockNoKey: URLSessionHandlerType {
+    func performRequest(path: String, query: [String : String]?) async throws -> Data {
+        throw WeatherAppError.RequestError.unauthorized
+    }
+}
 
 final class URLSessionHandlerMockEmptyData: URLSessionHandlerType {
     func performRequest(path: String, query: [String : String]?) async throws -> Data {
