@@ -1,7 +1,7 @@
 import XCTest
 @testable import WeatherAppProMax
 @testable import OpenWeatherNetworking
-@testable import WeatherAppError
+import WeatherAppError
 
 final class OpenWeatherAPITests: XCTestCase {
     private var api: OpenWeatherAPIType!
@@ -17,6 +17,8 @@ final class OpenWeatherAPITests: XCTestCase {
             XCTFail()
         }
     }
+    
+    
     
     func testGetForecastBadResponseType() async throws {
         api = OpenWeatherAPI(handler: URLSessionHandlerMockForecastData())
