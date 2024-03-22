@@ -19,7 +19,6 @@ final class MainViewViewModel: ObservableObject {
         self.repository = repository
         //loading data at init to get all stored models into weathers array
         loadData()
-        
     }
     
     private func loadData() {
@@ -40,12 +39,10 @@ final class MainViewViewModel: ObservableObject {
     func addNewButtonPressed() async {
         await fetchWeather(for: textfieldText)
         textfieldText = ""
-        addAlertShowing = false
     }
     
     func cancelButtonPressed() {
         textfieldText = ""
-        addAlertShowing = false
     }
     
     func onAppear() async {
@@ -96,6 +93,7 @@ final class MainViewViewModel: ObservableObject {
                 //if we have a model, refresh its data
                 weatherForCity.currentWeather = currentWeather
                 weatherForCity.currentRefreshDate = Date.now
+                print("refreshed weather for \(weatherForCity.cityName)")
             } else {
                 //if we dont have a model, we create a new one
                 let weather = Weather(
@@ -111,6 +109,7 @@ final class MainViewViewModel: ObservableObject {
             }
         } catch {
             //handle errors
+            print(error)
         }
     }
 }

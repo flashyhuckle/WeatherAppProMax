@@ -31,16 +31,12 @@ struct MainView: View {
                     }
                 }
             }
-            .alert("Add a city", isPresented: $vm.addAlertShowing, actions: {
-                TextField("City name", text: $vm.textfieldText)
-                Button("Add") {
-                    Task {
-                        await vm.addNewButtonPressed()
-                    }
+            .customAlert("Add a city", isPresented: $vm.addAlertShowing, textfieldText: $vm.textfieldText, actionText: "Add", action: {
+                Task {
+                    await vm.addNewButtonPressed()
                 }
-                Button("Cancel", role: .cancel) {
-                    vm.cancelButtonPressed()
-                }
+            }, cancelAction: {
+                vm.cancelButtonPressed()
             })
             .refreshable {
                 await vm.refresh()

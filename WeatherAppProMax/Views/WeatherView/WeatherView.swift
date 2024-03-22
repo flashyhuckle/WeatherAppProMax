@@ -31,6 +31,11 @@ struct WeatherView: View {
                     GridBackButton()
                 }
             }
+            .refreshable {
+                Task {
+                    await vm.forceRefresh()
+                }
+            }
             .onAppear {
                 Task { 
                     await vm.refreshForecast()
@@ -44,10 +49,6 @@ struct WeatherView: View {
             
             .frame(maxWidth: .infinity)
             .background(makeGradient())
-            
-            .refreshable {
-                await vm.forceRefresh()
-            }
         }
     }
     

@@ -39,6 +39,7 @@
 		A49BBE1A2B87714500A701A4 /* OpenWeatherAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BBE192B87714500A701A4 /* OpenWeatherAPIMock.swift */; };
 		A4A956752B5A98E900121014 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A956742B5A98E900121014 /* MainViewViewModel.swift */; };
 		A4A956772B5AC57600121014 /* CurrentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A956762B5AC57600121014 /* CurrentResponse.swift */; };
+		A4B1218C2BAC14DB007CA14E /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B1218B2BAC14DB007CA14E /* CustomAlertView.swift */; };
 		A4C469CC2B56B7AB00C12D98 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C469CB2B56B7AB00C12D98 /* MainView.swift */; };
 		A4D490992B878F4C00D58910 /* CurrentWeatherTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = A4D490982B878F4C00D58910 /* CurrentWeatherTestData.json */; };
 		A4D4909B2B878F6500D58910 /* ForecastTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = A4D4909A2B878F6500D58910 /* ForecastTestData.json */; };
@@ -111,6 +112,7 @@
 		A49BBE192B87714500A701A4 /* OpenWeatherAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPIMock.swift; sourceTree = "<group>"; };
 		A4A956742B5A98E900121014 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		A4A956762B5AC57600121014 /* CurrentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentResponse.swift; sourceTree = "<group>"; };
+		A4B1218B2BAC14DB007CA14E /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A4C469CB2B56B7AB00C12D98 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A4D490982B878F4C00D58910 /* CurrentWeatherTestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrentWeatherTestData.json; sourceTree = "<group>"; };
 		A4D4909A2B878F6500D58910 /* ForecastTestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ForecastTestData.json; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		A4592DFC2B4EE60400016D13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A4B1218B2BAC14DB007CA14E /* CustomAlertView.swift */,
 				A44300B32B717ABF0097A4AA /* MainView */,
 				A4A956742B5A98E900121014 /* MainViewViewModel.swift */,
 				A4ECDC232B8373C900E4BF4A /* MainViewTileViewModel.swift */,
@@ -539,6 +542,7 @@
 				A44300DD2B74FE990097A4AA /* Float.swift in Sources */,
 				A4E0BD012B484CC9002224ED /* WeatherAppProMaxApp.swift in Sources */,
 				A44300BC2B724FF40097A4AA /* UINavigationController.swift in Sources */,
+				A4B1218C2BAC14DB007CA14E /* CustomAlertView.swift in Sources */,
 				A44300E52B77C1320097A4AA /* HourForecastModel.swift in Sources */,
 				A4592E032B5054F600016D13 /* WeatherModel.swift in Sources */,
 				A44300C72B7298080097A4AA /* WeatherRepositoryType.swift in Sources */,

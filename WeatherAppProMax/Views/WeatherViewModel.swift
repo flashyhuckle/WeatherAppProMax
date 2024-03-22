@@ -58,6 +58,7 @@ class WeatherViewModel: ObservableObject {
         isForecastLoading = true
         do {
             //fetching forecast
+            print("fetching new forecast for \(weather.cityName)")
             let forecast = try await repository.getForecast(for: weather.cityName)
             print("fetched new forecast for \(forecast[0].cityName)")
             //editing model data with fresh entries
@@ -67,7 +68,7 @@ class WeatherViewModel: ObservableObject {
             //refreshing @Published values
             loadData()
         } catch {
-            
+            print(error)
         }
     }
 }
