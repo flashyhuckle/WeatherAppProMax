@@ -24,8 +24,10 @@ struct DailyForecastSubview: View {
             Image(systemName: icon)
                 .opacityFont(size: .small)
             HStack {
+                
                 Text(dayName)
                     .opacityFont(size: .small)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                 Spacer()
                 Text(tempMax)
                     .opacityFont(size: .small)
@@ -33,6 +35,7 @@ struct DailyForecastSubview: View {
                 Text(tempMin)
                     .opacityFont(size: .small, opacity: 0.8)
                     .frame(width: .xsmall + .medium, height: .small, alignment: .trailing)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
             }
         }
         .padding(EdgeInsets(top: .small / 4, leading: .small, bottom: .small / 4, trailing: .small))

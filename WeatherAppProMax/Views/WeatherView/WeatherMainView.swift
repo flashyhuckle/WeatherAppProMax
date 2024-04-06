@@ -58,7 +58,7 @@ struct WeatherMainSubview: View {
             }
             
         }
-        .padding(.horizontal)
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
     }
 }
 
