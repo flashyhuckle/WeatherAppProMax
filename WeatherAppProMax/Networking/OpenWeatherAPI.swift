@@ -1,7 +1,6 @@
 import Foundation
-import WeatherAppError
 
-public class OpenWeatherAPI {
+class OpenWeatherAPI {
     private let handler: URLSessionHandlerType
     
     public init(

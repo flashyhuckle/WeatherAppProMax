@@ -1,6 +1,4 @@
-import WeatherAppError
 import WeatherAppProMax
-import OpenWeatherNetworking
 
 import Foundation
 

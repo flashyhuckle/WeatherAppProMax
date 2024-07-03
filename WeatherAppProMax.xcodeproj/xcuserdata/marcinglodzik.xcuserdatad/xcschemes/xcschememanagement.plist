@@ -7,7 +7,35 @@
 		<key>WeatherAppProMax.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>WeatherAppProMaxTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>WeatherAppProMaxUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A480AB9E2C21990400F115B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4E0BCFC2B484CC9002224ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4E0BD0E2B484CCD002224ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -1,5 +1,4 @@
 import Foundation
-import WeatherAppError
 
 public class URLSessionHandler: URLSessionHandlerType {
     private let baseURL: URL

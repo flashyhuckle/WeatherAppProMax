@@ -1,7 +1,5 @@
 import Foundation
 
-@testable import OpenWeatherNetworking
-@testable import WeatherAppError
 @testable import WeatherAppProMax
 
 final class URLSessionHandlerMockForecastData: URLSessionHandlerType {

@@ -1,7 +1,5 @@
 import XCTest
 @testable import WeatherAppProMax
-@testable import OpenWeatherNetworking
-import WeatherAppError
 
 final class OpenWeatherAPITests: XCTestCase {
     private var api: OpenWeatherAPIType!
